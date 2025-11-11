@@ -23,6 +23,7 @@
       object-fit: cover;
       border-bottom: 3px solid rgba(255,255,255,0.2);
       animation: fadeIn 1.5s ease;
+      cursor: pointer;
     }
 
     h1 {
@@ -142,11 +143,33 @@
       font-size: 1.3em;
       margin-right: 6px;
     }
+
+    /* Ads section */
+    .ads-container {
+      margin: 40px auto;
+      width: 90%;
+      max-width: 600px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+      animation: fadeIn 2s ease;
+    }
+    .ads-container img {
+      width: 100%;
+      border-radius: 15px;
+    }
+    .ads-container p {
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 1.4;
+      color: #fff;
+    }
   </style>
 </head>
 <body>
-  <!-- Banner -->
-  <img src="https://play-lh.googleusercontent.com/tou_9u-Nohb_jdMpkZ8SyN65MBnaqB5P4zHrRRILOa_G-OWUvbdJc4On8qTQOH3S5U9v=w720-h405-rw" class="banner" alt="TrueMoney Banner" />
+  <!-- Top Banner -->
+  <img src="https://www.ababank.com/fileadmin/user_upload/Landing_Page/Truemoney/aba_truemoney_free_banner_en_v2.jpg" class="banner" alt="Top Banner" onclick="window.open('https://moneydrop.truemoney.com.kh/BD4A4ED0','_blank')" />
 
   <h1>🎁 TrueMoney Task Rewards</h1>
 
@@ -154,7 +177,7 @@
     <div class="task" id="task1">
       <h3><span class="icon">📢</span>Join Telegram Channel 1</h3>
       <div class="progress"><div class="progress-bar"></div></div>
-      <button onclick="startTask(1, 'https://t.me/seykormean')">Join Now</button>
+      <button onclick="startTask(1, 'https://t.me/xnhaofficial')">Join Now</button>
     </div>
 
     <div class="task" id="task2">
@@ -162,12 +185,39 @@
       <div class="progress"><div class="progress-bar"></div></div>
       <button onclick="startTask(2, 'https://t.me/+ToyMjlMGvjEzOWI1')" disabled>Join Now</button>
     </div>
+
+    <div class="task" id="task3">
+      <h3><span class="icon">📢</span>Join Telegram Channel 3</h3>
+      <div class="progress"><div class="progress-bar"></div></div>
+      <button onclick="startTask(3, 'https://t.me/bioimpanha')" disabled>Join Now</button>
+    </div>
+
+    <div class="task" id="task4">
+      <h3><span class="icon">▶️</span>Subscribe to YouTube</h3>
+      <div class="progress"><div class="progress-bar"></div></div>
+      <button onclick="startTask(4, 'https://youtube.com/@xingdev?si=R0gPZPIAejIirnHS')" disabled>Subscribe</button>
+    </div>
   </div>
 
+  <!-- Ads Section -->
+  <div class="ads-container">
+    <img src="https://i.postimg.cc/bwq5ygM5/20251111-002827.jpg" alt="Ad Banner" />
+    <p>
+      <strong>Xing St4re | Iteam Games Store</strong><br>
+      🔥 Trusted Since 202X<br>
+      🎮 Fast & Cheap Top Up Game<br>
+      📦 Instant Delivery | 24/7 Support<br>
+      📥 DM to Order :<br>
+      • Pay by ABA, Wing, TrueMoney<br>
+      📍 Cambodia 🇰🇭
+    </p>
+  </div>
+
+  <!-- Reward Banner -->
   <div class="reward-banner" id="rewardBanner">
     <h2>🎉 All Tasks Completed!</h2>
     <p>Your Reward Link:</p>
-    <div id="rewardLink" style="word-break: break-all;">https://moneydrop.truemoney.com.kh/46C5C2A</div>
+    <div id="rewardLink" style="word-break: break-all;">https://moneydrop.truemoney.com.kh/BD4A4ED0</div>
     <button class="copy-btn" onclick="copyReward()">📋 Copy Link</button>
     <br />
     <button class="reward-btn" onclick="openReward()">🚀 Go to Reward Link</button>
@@ -184,8 +234,8 @@
       button.disabled = true;
       progressBar.style.width = "0%";
 
-      // Fake progress bar tracking
-      let time = Math.random() * 5000 + 5000; // 5–10s
+      // Fake tracking 5–10s
+      let time = Math.random() * 5000 + 5000;
       let progress = 0;
       const interval = setInterval(() => {
         progress += 10;
