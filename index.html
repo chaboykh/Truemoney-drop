@@ -1,276 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TrueMoney Task Rewards</title>
+  <meta charset="UTF-8">
+  <title>TrueMoney Tasks</title>
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #ff8a00, #ffb347);
-      color: white;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
-
-    /* Banner image */
-    .banner {
-      width: 100%;
-      height: auto;
-      max-height: 200px;
-      object-fit: cover;
-      border-bottom: 3px solid rgba(255,255,255,0.2);
-      animation: fadeIn 1.5s ease;
-      cursor: pointer;
-    }
-
-    h1 {
-      margin-top: 20px;
-      font-size: 2em;
-      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-    }
-
-    .task-container {
+      background: linear-gradient(180deg, #ff9900 0%, #ffcc00 100%);
+      color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 30px;
-      gap: 20px;
+      min-height: 100vh;
+      margin: 0;
+      padding-bottom: 50px;
     }
-
-    .task {
-      background: rgba(255, 255, 255, 0.15);
-      padding: 20px 30px;
-      border-radius: 15px;
-      width: 85%;
-      max-width: 400px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease;
-      position: relative;
-    }
-
-    .task:hover {
-      transform: scale(1.05);
-    }
-
-    .task h3 {
-      margin-bottom: 10px;
-    }
-
-    button {
-      background: linear-gradient(90deg, #ffb347, #ff8a00);
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    button:disabled {
-      background: #999;
-      cursor: not-allowed;
-    }
-
-    button:hover:not(:disabled) {
-      box-shadow: 0 0 20px rgba(255,255,255,0.4);
-      transform: scale(1.05);
-    }
-
-    .completed {
-      background: rgba(0,255,0,0.15);
-      border: 1px solid #00ff77;
-    }
-
-    .progress {
-      width: 80%;
-      height: 8px;
+    .banner-top {
+      width: 100%;
+      max-width: 800px;
+      margin-top: 10px;
       border-radius: 10px;
-      background: rgba(255,255,255,0.3);
-      margin: 10px auto;
       overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
-
-    .progress-bar {
-      height: 100%;
-      width: 0;
-      background: #00ff77;
-      transition: width 0.5s;
+    .banner-top img {
+      width: 100%;
+      display: block;
     }
-
-    .reward-banner {
-      display: none;
-      margin-top: 40px;
-      background: rgba(0,0,0,0.3);
-      padding: 30px;
-      border-radius: 20px;
-      animation: fadeIn 1s ease;
+    h2 {
+      margin: 20px 0 10px;
+      font-size: 24px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+    .task {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 20px;
+      margin: 10px;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
     }
-
-    .copy-btn, .reward-btn {
-      margin-top: 15px;
-      border: none;
-      color: white;
+    .task:hover {
+      transform: scale(1.03);
+    }
+    button {
+      background: #fff;
+      color: #ff6600;
       font-weight: bold;
-      border-radius: 30px;
-      padding: 10px 25px;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
       cursor: pointer;
       transition: 0.3s;
     }
-
-    .copy-btn {
-      background: #00ff77;
-      color: black;
-    }
-
-    .reward-btn {
-      background: linear-gradient(90deg, #ffb347, #ff8a00);
-    }
-
-    .reward-btn:hover {
-      box-shadow: 0 0 15px rgba(255,255,255,0.3);
-    }
-
-    .icon {
-      font-size: 1.3em;
-      margin-right: 6px;
-    }
-
-    /* Ads section */
-    .ads-container {
-      margin: 40px auto;
-      width: 90%;
-      max-width: 600px;
-      background: rgba(0,0,0,0.3);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-      animation: fadeIn 2s ease;
-    }
-    .ads-container img {
-      width: 100%;
-      border-radius: 15px;
-    }
-    .ads-container p {
-      margin-top: 10px;
-      font-size: 16px;
-      line-height: 1.4;
+    button:hover {
+      background: #ff6600;
       color: #fff;
+    }
+    button:disabled {
+      background: #999;
+      color: #eee;
+      cursor: not-allowed;
+    }
+    .progress {
+      width: 100%;
+      height: 8px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 8px;
+      display: none;
+    }
+    .bar {
+      height: 100%;
+      width: 0;
+      background: #00ff88;
+      animation: progressAnim 5s linear forwards;
+    }
+    @keyframes progressAnim {
+      to { width: 100%; }
+    }
+    .ads {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 15px;
+      margin-top: 25px;
+      width: 320px;
+      text-align: center;
+    }
+    .ads img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .banner-reward {
+      margin-top: 25px;
+      padding: 15px;
+      background: #00b36b;
+      border-radius: 12px;
+      color: #fff;
+      text-align: center;
+      display: none;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+    .copy-btn {
+      background: #fff;
+      color: #00b36b;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .footer {
+      margin-top: 30px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
     }
   </style>
 </head>
 <body>
+
   <!-- Top Banner -->
-  <img src="https://www.ababank.com/fileadmin/user_upload/Landing_Page/Truemoney/aba_truemoney_free_banner_en_v2.jpg" class="banner" alt="Top Banner" onclick="window.open('https://moneydrop.truemoney.com.kh/BD4A4ED0','_blank')" />
-
-  <h1>🎁 TrueMoney Task Rewards</h1>
-
-  <div class="task-container">
-    <div class="task" id="task1">
-      <h3><span class="icon">📢</span>Join Telegram Channel 1</h3>
-      <div class="progress"><div class="progress-bar"></div></div>
-      <button onclick="startTask(1, 'https://t.me/xnhaofficial')">Join Now</button>
-    </div>
-
-    <div class="task" id="task2">
-      <h3><span class="icon">📢</span>Join Telegram Channel 2</h3>
-      <div class="progress"><div class="progress-bar"></div></div>
-      <button onclick="startTask(2, 'https://t.me/+ToyMjlMGvjEzOWI1')" disabled>Join Now</button>
-    </div>
-
-    <div class="task" id="task3">
-      <h3><span class="icon">📢</span>Join Telegram Channel 3</h3>
-      <div class="progress"><div class="progress-bar"></div></div>
-      <button onclick="startTask(3, 'https://t.me/bioimpanha')" disabled>Join Now</button>
-    </div>
-
-    <div class="task" id="task4">
-      <h3><span class="icon">▶️</span>Subscribe to YouTube</h3>
-      <div class="progress"><div class="progress-bar"></div></div>
-      <button onclick="startTask(4, 'https://youtube.com/@xingdev?si=R0gPZPIAejIirnHS')" disabled>Subscribe</button>
-    </div>
+  <div class="banner-top">
+    <img src="https://www.ababank.com/fileadmin/user_upload/Landing_Page/Truemoney/aba_truemoney_free_banner_en_v2.jpg" alt="TrueMoney Banner">
   </div>
 
-  <!-- Ads Section -->
-  <div class="ads-container">
-    <img src="https://i.postimg.cc/bwq5ygM5/20251111-002827.jpg" alt="Ad Banner" />
-    <p>
-      <strong>Xing St4re | Iteam Games Store</strong><br>
-      🔥 Trusted Since 202X<br>
-      🎮 Fast & Cheap Top Up Game<br>
-      📦 Instant Delivery | 24/7 Support<br>
-      📥 DM to Order :<br>
-      • Pay by ABA, Wing, TrueMoney<br>
-      📍 Cambodia 🇰🇭
-    </p>
+  <h2>🎯 Complete Telegram Tasks</h2>
+
+  <div id="tasks">
+    <div class="task" id="task1">
+      <p>Join Telegram Channel 1</p>
+      <button onclick="startTask(1, 'https://t.me/xnhaofficial')">Start</button>
+      <div class="progress"><div class="bar"></div></div>
+    </div>
+    <div class="task" id="task2">
+      <p>Join Telegram Channel 2</p>
+      <button onclick="startTask(2, 'https://t.me/+ToyMjlMGvjEzOWI1')" disabled>Locked 🔒</button>
+      <div class="progress"><div class="bar"></div></div>
+    </div>
+    <div class="task" id="task3">
+      <p>Join Telegram Channel 3</p>
+      <button onclick="startTask(3, 'https://t.me/bioimpanha')" disabled>Locked 🔒</button>
+      <div class="progress"><div class="bar"></div></div>
+    </div>
   </div>
 
   <!-- Reward Banner -->
-  <div class="reward-banner" id="rewardBanner">
-    <h2>🎉 All Tasks Completed!</h2>
-    <p>Your Reward Link:</p>
-    <div id="rewardLink" style="word-break: break-all;">https://moneydrop.truemoney.com.kh/BD4A4ED0</div>
-    <button class="copy-btn" onclick="copyReward()">📋 Copy Link</button>
-    <br />
-    <button class="reward-btn" onclick="openReward()">🚀 Go to Reward Link</button>
+  <div class="banner-reward" id="banner">
+    🎁 All Tasks Completed!  
+    <br>✅ <b>Open the Box Now</b><br>
+    <a href="https://moneydrop.truemoney.com.kh/7590409" target="_blank">
+      <button class="copy-btn">🎁 Open Reward Box</button>
+    </a>
+  </div>
+
+  <!-- Ads -->
+  <div class="ads">
+    <img src="https://i.postimg.cc/bwq5ygM5/20251111-002827.jpg" alt="Ad Banner">
+    <h3>Xing St4re | Iteam Games Store</h3>
+    <p>🔥 Trusted Since 202X<br>
+    🎮 Fast & Cheap Top Up Game<br>
+    📦 Instant Delivery | 24/7 Support<br>
+    📥 DM to Order :<br>
+    • Pay by ABA, Wing, TrueMoney<br>
+    📍 Cambodia 🇰🇭</p>
+  </div>
+
+  <div class="footer">
+    © 2025 TrueMoney Cambodia | Design by Xnha Dev
   </div>
 
   <script>
-    function startTask(taskNumber, link) {
+    let currentTask = 1;
+
+    function startTask(num, link) {
+      const button = document.querySelector(`#task${num} button`);
+      const progress = document.querySelector(`#task${num} .progress`);
+      button.disabled = true;
+      button.textContent = 'Opening Telegram...';
       window.open(link, '_blank');
 
-      const task = document.getElementById(`task${taskNumber}`);
-      const button = task.querySelector("button");
-      const progressBar = task.querySelector(".progress-bar");
+      // Start fake tracking bar
+      progress.style.display = 'block';
+      progress.querySelector('.bar').style.width = '0';
+      progress.querySelector('.bar').style.animation = 'progressAnim 5s linear forwards';
 
-      button.disabled = true;
-      progressBar.style.width = "0%";
-
-      // Fake tracking 5–10s
-      let time = Math.random() * 5000 + 5000;
-      let progress = 0;
-      const interval = setInterval(() => {
-        progress += 10;
-        progressBar.style.width = progress + "%";
-      }, time / 10);
+      // Random delay 5–10s
+      const delay = Math.floor(Math.random() * 5000) + 5000;
 
       setTimeout(() => {
-        clearInterval(interval);
-        progressBar.style.width = "100%";
-        task.classList.add("completed");
-        button.textContent = "✅ Completed";
+        button.textContent = '✅ Task Completed (Say Hi 👋 Sent)';
+        progress.style.display = 'none';
 
-        const nextTask = document.getElementById(`task${taskNumber + 1}`);
-        if (nextTask) {
-          nextTask.querySelector("button").disabled = false;
+        // Unlock next
+        if (num < 3) {
+          const nextBtn = document.querySelector(`#task${num + 1} button`);
+          nextBtn.disabled = false;
+          nextBtn.textContent = 'Start';
         } else {
-          showReward();
+          showBanner();
         }
-      }, time);
+      }, delay);
     }
 
-    function showReward() {
-      document.getElementById("rewardBanner").style.display = "block";
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
-
-    function copyReward() {
-      const link = document.getElementById("rewardLink").textContent;
-      navigator.clipboard.writeText(link);
-      alert("✅ Reward link copied!");
-    }
-
-    function openReward() {
-      const link = document.getElementById("rewardLink").textContent;
-      window.open(link, '_blank');
+    function showBanner() {
+      document.getElementById('banner').style.display = 'block';
     }
   </script>
 </body>
